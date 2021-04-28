@@ -22,6 +22,32 @@
     z-index: var(--max-z-index);
 }
 
+.range-slider {
+    -webkit-appearance: none;
+    height: 8px;
+    width: 150px;
+    background: var(--color-secondary-grey);
+    transition: .2s;
+}
+
+.range-slider::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    background: url("./star.png");
+}
+
+.range-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border: none;
+    background: url("./star.png");
+}
+
 @media screen and (max-width: 965px) {
     .product-item {
         width: 100%;

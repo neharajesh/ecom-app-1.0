@@ -263,6 +263,7 @@ export const Products = () => {
           </legend>
           1{"  "}
           <input
+            className="range-slider"
             type="range"
             min={1}
             max={5}
