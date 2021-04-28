@@ -8,7 +8,7 @@ import { updateCart } from "../Utilities/cart-utilities";
 import "./products.css";
 import { updateWishlist } from "../Utilities/wishlist-utilities";
 import { useOffers } from "../context/offers-context";
-import { BsLightningFill, BsSliders } from "react-icons/bs";
+import { BsLightningFill } from "react-icons/bs";
 import { GiRoundStar } from "react-icons/gi";
 
 export const Products = () => {
@@ -24,6 +24,7 @@ export const Products = () => {
     fastDeliveryOnly: false,
     sortByPrice: null,
     sortByRating: 0,
+    sortByOffers: null,
   };
 
   const reducerFunction = (state, action) => {
@@ -48,6 +49,11 @@ export const Products = () => {
           ...state,
           sortByRating: action.payload,
         });
+      case "SORT_BY_OFFERS":
+        return (state = {
+          ...state,
+          sortByOffers: action.payload,
+        });
       case "INITIAL_DATA":
         return initialData;
       default:
@@ -56,7 +62,7 @@ export const Products = () => {
   };
 
   const [
-    { inStockOnly, fastDeliveryOnly, sortByPrice, sortByRating },
+    { inStockOnly, fastDeliveryOnly, sortByPrice, sortByRating, sortByOffers },
     dispatch,
   ] = useReducer(reducerFunction, initialData);
 
@@ -80,6 +86,34 @@ export const Products = () => {
     return sortedProductList;
   };
 
+  const getOffersSortedData = (existingProductList, sortByOffers) => {
+    console.log("sort here by offers");
+    const noDiscount = offersList.find((item) => item.name === "No Discount");
+    const tenPercentDiscount = offersList.find(
+      (item) => item.name === "Ten Percent Discount"
+    );
+    const twelvePercentDiscount = offersList.find(
+      (item) => item.name === "Twelve Percent Discount"
+    );
+
+    console.log(noDiscount, tenPercentDiscount, twelvePercentDiscount);
+
+    if (sortByOffers === "NO_DISCOUNT") {
+      return existingProductList.filter(
+        (item) => item.offers[0] === noDiscount._id
+      );
+    } else if (sortByOffers === "10_PERC_DISCOUNT") {
+      return existingProductList.filter(
+        (item) => item.offers[0] === tenPercentDiscount._id
+      );
+    } else if (sortByOffers === "12_PERC_DISCOUNT") {
+      return existingProductList.filter(
+        (item) => item.offers[0] === twelvePercentDiscount._id
+      );
+    }
+    return existingProductList;
+  };
+
   const getFilteredData = (
     existingProductList,
     fastDeliveryOnly,
@@ -93,8 +127,9 @@ export const Products = () => {
 
   const priceSortedData = getPriceSortedData(productList, sortByPrice);
   const ratingSortedData = getRatingSortedData(priceSortedData, sortByRating);
+  const offersSortedData = getOffersSortedData(ratingSortedData, sortByOffers);
   const filteredData = getFilteredData(
-    ratingSortedData,
+    offersSortedData,
     fastDeliveryOnly,
     inStockOnly
   );
@@ -139,7 +174,7 @@ export const Products = () => {
     return starString;
   };
 
-  const filtersDiv = useRef("flex");
+  const filtersDiv = useRef("none");
   const sliderStars = useRef(0);
 
   const getSliderValue = () => {
@@ -163,8 +198,7 @@ export const Products = () => {
         className="button-filters btn fill-primary-yellow pd-05 mg-05 h-fit w-fit bdr-rad-m bdr-thick"
         onClick={toggleFilterDiv}
       >
-        {" "}
-        Sorting/Filters{" "}
+        {showFilters ? "Show" : "Hide"} Sorting/Filters
       </button>
       <div ref={filtersDiv} className="flex flex-row-wrap w-75">
         <fieldset className="w-auto mg-1 pd-1">
@@ -239,6 +273,56 @@ export const Products = () => {
             checked={sortByRating && sortByRating === sliderVal}
           />
           {"  "}5
+        </fieldset>
+
+        <br />
+
+        <fieldset className="w-auto mg-1 pd-1">
+          <legend>Offers :</legend>
+          <label>
+            <input
+              className="mg-r-05 txt-xs"
+              type="radio"
+              onChange={() =>
+                dispatch({
+                  type: "SORT_BY_OFFERS",
+                  payload: "NO_DISCOUNT",
+                })
+              }
+              checked={sortByOffers && sortByOffers === "NO_DISCOUNT"}
+            />{" "}
+            No Discount
+          </label>
+          <br />
+          <label>
+            <input
+              className="mg-r-05 txt-xs"
+              type="radio"
+              onChange={() =>
+                dispatch({
+                  type: "SORT_BY_OFFERS",
+                  payload: "10_PERC_DISCOUNT",
+                })
+              }
+              checked={sortByOffers && sortByOffers === "10_PERC_DISCOUNT"}
+            />{" "}
+            10% Discount
+          </label>
+          <br />
+          <label>
+            <input
+              className="mg-r-05 txt-xs"
+              type="radio"
+              onChange={() =>
+                dispatch({
+                  type: "SORT_BY_OFFERS",
+                  payload: "12_PERC_DISCOUNT",
+                })
+              }
+              checked={sortByOffers && sortByOffers === "12_PERC_DISCOUNT"}
+            />{" "}
+            12% Discount
+          </label>
         </fieldset>
 
         <button

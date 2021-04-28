@@ -11,6 +11,10 @@
     display: none;
 }
 
+.header-links {
+    padding-top: 0;
+}
+
 .sidebar {
     width: 200px;
     height: 90vh;
@@ -31,11 +35,11 @@
     align-items: center;
 }
 
-.sidebar .nav-link:hover {
+.nav-link:hover {
     background-color: pink;
 }
 
-.sidebar .nav-link>span {
+.nav-link span {
     font-size: 0.9em;
     margin-left: 0.8rem;
     text-decoration: none;
