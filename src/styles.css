@@ -3,8 +3,8 @@
 
 :root {
     --max-z-index: 5;
-    --color-button-blue: #53beeb;
-    --color-button-black: #010101;
+    --color-button-blue: #f4acb7;
+    --color-button-black: #003049;
 }
 
 * {

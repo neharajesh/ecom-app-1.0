@@ -15,11 +15,7 @@
 }
 
 .product-button:hover {
-    border: 2px solid var(--color-primary-blue);
-}
-
-#button-wishlist { 
-    z-index: var(--max-z-index);
+    border: 2px solid var(--color-primary-grey);
 }
 
 .range-slider {

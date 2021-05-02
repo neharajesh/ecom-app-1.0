@@ -11,7 +11,7 @@ export const Header = ({ handleToggleSidebar }) => {
           size={35}
           onClick={() => handleToggleSidebar()}
         />
-        <div className="txt-xl txt-700">Pet Smart</div>
+        <div className="header-brand txt-700">PET MART</div>
 
         <div className="header-links flex">
           <NavLink to="/cart" className="nav-link" activeClassName="nav-active">
