@@ -1,11 +1,11 @@
 import { useEffect, useReducer, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useProduct } from "../context/product-context";
+import { useProduct } from "../../context/product-context";
 import "./products.css";
-import { useOffers } from "../context/offers-context";
+import { useOffers } from "../../context/offers-context";
 import { BsLightningFill } from "react-icons/bs";
 import { GiRoundStar } from "react-icons/gi";
-import { initialData, reducerFunction } from "../reducer/product-reducer";
+import { initialData, reducerFunction } from "../../reducer/product-reducer";
 import {
   getPriceSortedData,
   getRatingSortedData,

@@ -1,8 +1,8 @@
 import { useParams } from "react-router";
-import { useOffers } from "../context/offers-context";
-import { useProduct } from "../context/product-context";
+import { useOffers } from "../../context/offers-context";
+import { useProduct } from "../../context/product-context";
 import { GiRoundStar } from "react-icons/gi";
-import "../styles.css";
+import "../../styles.css";
 
 export const ProductDetails = () => {
   const { offersList } = useOffers();

@@ -1,5 +1,5 @@
-import { useWishlist } from "../context/wishlist-context";
-import "../styles.css";
+import { useWishlist } from "../../context/wishlist-context";
+import "../../styles.css";
 import { RemoveFromWishlist } from "./RemoveFromWishlist";
 
 export const Wishlist = () => {

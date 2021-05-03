@@ -1,7 +1,7 @@
 import { showNotification } from "../Utilities/toast";
 import { updateWishlist } from "../Utilities/wishlist-utilities";
-import { useWishlist } from "../context/wishlist-context";
-import "../styles.css";
+import { useWishlist } from "../../context/wishlist-context";
+import "../../styles.css";
 
 export const AddToWishlist = ({ existingProductList, productId }) => {
   const { itemsInWishlist, setItemsInWishlist } = useWishlist();

@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router";
 import { Layout } from "./Layout/Layout";
-import { Home } from "./Home/Home";
-import { Products } from "./Products/Products";
-import { Cart } from "./Cart/Cart";
-import { Wishlist } from "./Wishlist/Wishlist";
-import { ProductDetails } from "./Products/ProductDetails";
 import "./styles.css";
-import { Login } from "./Login/Login";
-import { Profile } from "./Profile/Profile";
+import { Home } from "./components/Home/Home";
+import { Products } from "./components/Products/Products";
+import { Cart } from "./components/Cart/Cart";
+import { Wishlist } from "./components/Wishlist/Wishlist";
+import { ProductDetails } from "./components/Products/ProductDetails";
+import { Login } from "./components/Login/Login";
+import { Profile } from "./components/Profile/Profile";
 
-function App() {
+const App = () => {
   return (
     <>
       <Routes>
@@ -49,6 +49,6 @@ function App() {
       </Routes>
     </>
   );
-}
+};
 
 export default App;
