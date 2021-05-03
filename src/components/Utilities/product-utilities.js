@@ -18,21 +18,11 @@ export const getRatingSortedData = (existingProductList, sortByRating) => {
   return sortedProductList;
 };
 
-// export const getOffersSortedData = (
-//   existingProductList,
-//   sortByOffers,
-//   offerId
-// ) => {
-//   const noDiscount = offersList.find((item) => item.name === "No Discount");
-//   const tenPercentDiscount = offersList.find(
-//     (item) => item.name === "Ten Percent Discount"
-//   );
-//   const twelvePercentDiscount = offersList.find(
-//     (item) => item.name === "Twelve Percent Discount"
-//   );
-
+// export const getOffersSortedData = (existingProductList, sortByOffers) => {
 //   if (sortByOffers === offerType) {
-//     return existingProductList.filter((item) => item.offers[0] === offerId);
+//     return existingProductList.filter(
+//       (item) => item.offers[0] === sortByOffers
+//     );
 //   }
 //   return existingProductList;
 // };

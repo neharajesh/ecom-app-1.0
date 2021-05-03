@@ -7,21 +7,24 @@ import { ProductProvider } from "./context/product-context";
 import { CartProvider } from "./context/cart-context";
 import { WishlistProvider } from "./context/wishlist-context";
 import { OffersProvider } from "./context/offers-context";
+import { CategoryProvider } from "./context/categories-context";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <OffersProvider>
-        <ProductProvider>
-          <LoginProvider>
-            <CartProvider>
-              <WishlistProvider>
-                <App />
-              </WishlistProvider>
-            </CartProvider>
-          </LoginProvider>
-        </ProductProvider>
-      </OffersProvider>
+      <CategoryProvider>
+        <OffersProvider>
+          <ProductProvider>
+            <LoginProvider>
+              <CartProvider>
+                <WishlistProvider>
+                  <App />
+                </WishlistProvider>
+              </CartProvider>
+            </LoginProvider>
+          </ProductProvider>
+        </OffersProvider>
+      </CategoryProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

@@ -3,6 +3,7 @@
 .toast {
     background-color: var(--color-primary-purple);
     color: white;
+    margin: 1rem;
     padding: 1rem;
     border-radius: 3px;
     width: 15rem;

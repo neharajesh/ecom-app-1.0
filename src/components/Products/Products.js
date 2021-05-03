@@ -9,7 +9,7 @@ import { initialData, reducerFunction } from "../../reducer/product-reducer";
 import {
   getPriceSortedData,
   getRatingSortedData,
-  getOffersSortedData,
+  // getOffersSortedData,
   getFilteredData,
 } from "../Utilities/product-utilities";
 import { AddToCart } from "../Cart/AddToCart";
@@ -18,8 +18,6 @@ import { AddToWishlist } from "../Wishlist/AddToWishlist";
 export const Products = () => {
   const { productList } = useProduct();
   const { offersList } = useOffers();
-  // const { setCartCount, setCartPrice, itemsInCart, setItemsInCart } = useCart();
-  // const { itemsInWishlist, setItemsInWishlist } = useWishlist();
   const [showFilters, setShowFilters] = useState(false);
   const [sliderVal, setSliderVal] = useState(0);
 
@@ -28,9 +26,31 @@ export const Products = () => {
     dispatch,
   ] = useReducer(reducerFunction, initialData);
 
+  // const sortUsingOffers = (existingProductList, sortByOffers) => {
+  //   const noDiscount = offersList.find((offer) => offer.name === "No Discount");
+  //   const tenPercent = offersList.find(
+  //     (offer) => offer.name === "Ten Percent Discount"
+  //   );
+  //   const twelvePercent = offersList.find(
+  //     (offer) => offer.name === "Twelve Percent"
+  //   );
+
+  //   if (sortByOffers === noDiscount) {
+  //     getOffersSortedData(existingProductList, sortByOffers, noDiscount);
+  //   } else if (sortByOffers === tenPercent) {
+  //     getOffersSortedData(existingProductList, sortByOffers, tenPercent);
+  //   } else if (sortByOffers === twelvePercent) {
+  //     getOffersSortedData(existingProductList, sortByOffers, twelvePercent);
+  //   } else return existingProductList;
+  // };
+
   const priceSortedData = getPriceSortedData(productList, sortByPrice);
   const ratingSortedData = getRatingSortedData(priceSortedData, sortByRating);
-  // const offersSortedData = getOffersSortedData(ratingSortedData, sortByOffers);
+  // const offersSortedData = getOffersSortedData(
+  //   ratingSortedData,
+  //   offersList,
+  //   sortByOffers
+  // );
   const filteredData = getFilteredData(
     ratingSortedData,
     fastDeliveryOnly,
