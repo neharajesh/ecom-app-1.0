@@ -1,44 +1,12 @@
 import { useCart } from "../context/cart-context";
-import { showNotification } from "../Utilities/toast";
-import { updateCart } from "../Utilities/cart-utilities";
 import { useProduct } from "../context/product-context";
 import "../styles.css";
+import { AddToCart } from "./AddToCart";
+import { RemoveFromCart } from "./RemoveFromCart";
 
 export const Cart = () => {
-  const {
-    cartCount,
-    setCartCount,
-    cartPrice,
-    setCartPrice,
-    itemsInCart,
-    setItemsInCart,
-  } = useCart();
-
+  const { cartCount, cartPrice, itemsInCart } = useCart();
   const { productList } = useProduct();
-  console.log(itemsInCart);
-  const updateCartItems = (
-    existingProductList,
-    itemsInCart,
-    productId,
-    action
-  ) => {
-    const updatedCartList = updateCart(
-      existingProductList,
-      itemsInCart,
-      productId,
-      action
-    );
-    console.log("UpdatedCartItems Are");
-    console.log(updatedCartList);
-    let cartTotal = updatedCartList.reduce((prev, current) => {
-      return prev + current.quantity * current.price;
-    }, 0);
-    setCartCount((count) => updatedCartList.length);
-    setCartPrice(cartTotal);
-    setItemsInCart(updatedCartList);
-    if (action === "ADD") showNotification("Added to Cart");
-  };
-
   const updatedItemsList = itemsInCart.filter((item) => item.quantity > 0);
 
   return (
@@ -67,28 +35,17 @@ export const Cart = () => {
                   Rs. {item.price}{" "}
                 </p>
                 <div className="flex flex-space-evenly">
-                  <button
-                    className="pd-05 mg-05 bdr-none bdr-rad-m btn btn-primary-blue txt-white"
-                    onClick={() =>
-                      updateCartItems(productList, itemsInCart, item._id, "ADD")
-                    }
-                  >
-                    +
-                  </button>
+                  <AddToCart
+                    buttonVal={"+"}
+                    existingProductList={productList}
+                    productId={item._id}
+                  />
                   <p>{item.quantity}</p>
-                  <button
-                    className="pd-05 mg-05 bdr-thick bdr-blue bdr-rad-m btn btn-secondary-blue"
-                    onClick={() =>
-                      updateCartItems(
-                        productList,
-                        itemsInCart,
-                        item._id,
-                        "REMOVE"
-                      )
-                    }
-                  >
-                    -
-                  </button>
+                  <RemoveFromCart
+                    buttonVal={"-"}
+                    existingProductList={productList}
+                    productId={item._id}
+                  />
                 </div>
               </div>
             </div>
