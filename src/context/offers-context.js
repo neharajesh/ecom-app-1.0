@@ -8,9 +8,7 @@ export const OffersProvider = ({ children }) => {
 
   const loadOffersList = async () => {
     try {
-      const response = await axios.get(
-        "https://ecommerce-application-backend.neharajesh.repl.co/offers"
-      );
+      const response = await axios.get("http://localhost:5000/offers");
       setOffersList(response.data);
     } catch (err) {
       console.log("Error occurred => ", err.message);

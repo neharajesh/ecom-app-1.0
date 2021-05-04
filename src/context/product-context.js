@@ -8,9 +8,7 @@ export const ProductProvider = ({ children }) => {
 
   const loadProductList = async () => {
     try {
-      const response = await axios.get(
-        "https://ecommerce-application-backend.neharajesh.repl.co/products"
-      );
+      const response = await axios.get("http://localhost:5000/products");
       setProductList(response.data);
     } catch (err) {
       console.log("Error Occurred => ", err.message);

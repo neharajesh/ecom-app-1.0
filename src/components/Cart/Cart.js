@@ -67,7 +67,7 @@ export const Cart = () => {
         <button className="btn fill-primary-yellow pd-05 mg-05 h-fit w-fit bdr-rad-m bdr-thick flex-self-center">
           Checkout
         </button>
-        <div id="notification-container" style={{ fontSize: "0.7em" }}></div>
+        <div id="notification-container"></div>
       </div>
     </div>
   );

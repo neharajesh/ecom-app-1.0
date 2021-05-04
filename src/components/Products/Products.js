@@ -9,7 +9,6 @@ import { initialData, reducerFunction } from "../../reducer/product-reducer";
 import {
   getPriceSortedData,
   getRatingSortedData,
-  // getOffersSortedData,
   getFilteredData,
 } from "../Utilities/product-utilities";
 import { AddToCart } from "../Cart/AddToCart";
@@ -26,33 +25,39 @@ export const Products = () => {
     dispatch,
   ] = useReducer(reducerFunction, initialData);
 
-  // const sortUsingOffers = (existingProductList, sortByOffers) => {
-  //   const noDiscount = offersList.find((offer) => offer.name === "No Discount");
-  //   const tenPercent = offersList.find(
-  //     (offer) => offer.name === "Ten Percent Discount"
-  //   );
-  //   const twelvePercent = offersList.find(
-  //     (offer) => offer.name === "Twelve Percent"
-  //   );
+  const getOfferSortedData = (existingProductList, sortByOffers) => {
+    const noDiscount = offersList.find((offer) => offer.name === "No Discount");
+    const tenPercent = offersList.find(
+      (offer) => offer.name === "Ten Percent Discount"
+    );
+    const twelvePercent = offersList.find(
+      (offer) => offer.name === "Twelve Percent"
+    );
 
-  //   if (sortByOffers === noDiscount) {
-  //     getOffersSortedData(existingProductList, sortByOffers, noDiscount);
-  //   } else if (sortByOffers === tenPercent) {
-  //     getOffersSortedData(existingProductList, sortByOffers, tenPercent);
-  //   } else if (sortByOffers === twelvePercent) {
-  //     getOffersSortedData(existingProductList, sortByOffers, twelvePercent);
-  //   } else return existingProductList;
-  // };
+    if (sortByOffers === noDiscount) {
+      return existingProductList.filter(
+        (product) => product.offers[0] === noDiscount._id
+      );
+    } else if (sortByOffers === tenPercent) {
+      return existingProductList.filter(
+        (product) => product.offers[0] === tenPercent._id
+      );
+    } else if (sortByOffers === twelvePercent) {
+      return existingProductList.filter(
+        (product) => product.offers[0] === twelvePercent._id
+      );
+    } else return existingProductList;
+  };
 
   const priceSortedData = getPriceSortedData(productList, sortByPrice);
   const ratingSortedData = getRatingSortedData(priceSortedData, sortByRating);
-  // const offersSortedData = getOffersSortedData(
-  //   ratingSortedData,
-  //   offersList,
-  //   sortByOffers
-  // );
-  const filteredData = getFilteredData(
+  const offersSortedData = getOfferSortedData(
     ratingSortedData,
+    offersList,
+    sortByOffers
+  );
+  const filteredData = getFilteredData(
+    offersSortedData,
     fastDeliveryOnly,
     inStockOnly
   );
@@ -226,9 +231,19 @@ export const Products = () => {
           Reset Filters
         </button>
       </div>
+
       <div className="h-auto w-100 flex flex-row-wrap mg-tb-1 mg-r-2">
         {filteredData.map(
-          ({ _id, name, image, price, rating, inStock, fastDelivery }) => (
+          ({
+            _id,
+            name,
+            brand,
+            image,
+            price,
+            rating,
+            inStock,
+            fastDelivery,
+          }) => (
             <div
               key={_id}
               className="product-item card bdr-thin bdr-none bs bdr-rad-m mg-05 flex"
@@ -240,10 +255,11 @@ export const Products = () => {
               />
               <div className="w-100 mg-1 flex-col-center-items-y">
                 <p className="txt-700 txt-l">{name}</p>
+                <p className="txt-500 txt-s txt-grey">{brand.toUpperCase()}</p>
                 <p className="txt-l txt-700 txt-blue mg-tb-025 price-blue">
                   Rs. {price}
                 </p>
-                <p className="mg-tb-05">{addRatingStars(rating)}</p>
+                <span className=" mg-tb-05">{addRatingStars(rating)}</span>
                 {fastDelivery && (
                   <span className="badge-tl txt-500 pd-05 txt-s bdr-rad-round">
                     <BsLightningFill size={20} className="txt-yellow" />
@@ -264,7 +280,7 @@ export const Products = () => {
                 <br />
                 <Link
                   id="view-details"
-                  className="txt-black"
+                  className="txt-black txt-m txt-deco-none"
                   to={`/products/${_id}`}
                 >
                   View Details

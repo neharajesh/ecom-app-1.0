@@ -18,15 +18,6 @@ export const getRatingSortedData = (existingProductList, sortByRating) => {
   return sortedProductList;
 };
 
-// export const getOffersSortedData = (existingProductList, sortByOffers) => {
-//   if (sortByOffers === offerType) {
-//     return existingProductList.filter(
-//       (item) => item.offers[0] === sortByOffers
-//     );
-//   }
-//   return existingProductList;
-// };
-
 export const getFilteredData = (
   existingProductList,
   fastDeliveryOnly,

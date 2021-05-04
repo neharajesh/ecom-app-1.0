@@ -10,6 +10,8 @@
 .header-brand {
     font-size: 2rem; 
     font-weight: bolder;
+    text-decoration: none;
+    color: black;
 }
 
 .header-brand:hover {
@@ -64,6 +66,24 @@
 
 .nav-link:hover {
     background-color: pink;
+    background-image: linear-gradient(
+        45deg,
+        #CA4246 16.666%, 
+        #E16541 16.666%, 
+        #E16541 33.333%, 
+        #F18F43 33.333%, 
+        #F18F43 50%, 
+        #8B9862 50%, 
+        #8B9862 66.666%, 
+        #476098 66.666%, 
+        #476098 83.333%, 
+        #A7489B 83.333%);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
 }
 
 .nav-link span {
@@ -78,21 +98,18 @@
     cursor: pointer;
     text-decoration: none;
     color: black;
-    font-style: italic;
 }
 
 .nav-active span { 
     cursor: pointer;
 }
 
-.sidebar hr {
-    margin: 1rem 0;
-    height: 0;
-    border-top: 0.05px thin var(--color-light-grey);
-}
-
 .sidebar.open {
     transform: translateX(0);
+}
+
+.sidebarOnly {
+    display: none;
 }
 
 
@@ -132,7 +149,7 @@
     .sidebar .nav-link>span {
         display: inline;
     }
-    .sidebar hr {
-        display: none;
-    }    
+    .sidebarOnly {
+        display: block;
+    }
 }

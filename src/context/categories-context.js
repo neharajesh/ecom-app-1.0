@@ -4,17 +4,16 @@ import { createContext, useContext, useEffect, useState } from "react";
 const CategoryContext = createContext();
 
 export const CategoryProvider = ({ children }) => {
-  const [categories, setCategories] = useState();
+  const [categoryList, setCategoryList] = useState();
 
   console.log("inside categories context");
 
   const loadCategoriesList = async () => {
     try {
-      const response = await axios.get(
-        "https://ecommerce-application-backend.neharajesh.repl.co/categories"
-      );
-      console.log(response, "inside categories context");
-      setCategories(response.data);
+      const response = await axios.get("http://localhost:5000/categories");
+      console.log(response.data);
+      localStorage.setItem("categoriesList", categoryList);
+      setCategoryList(response.data);
     } catch (err) {
       console.log(
         "Error occurred while retriving category list -",
@@ -23,13 +22,14 @@ export const CategoryProvider = ({ children }) => {
     }
   };
 
+  // eslint-disable-next-line
   useEffect(() => {
     loadCategoriesList();
-  }, [setCategories]);
+  }, [setCategoryList]);
 
   return (
     <>
-      <CategoryContext.Provider value={{ categories }}>
+      <CategoryContext.Provider value={{ categoryList }}>
         {children}
       </CategoryContext.Provider>
     </>

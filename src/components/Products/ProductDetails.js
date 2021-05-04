@@ -11,6 +11,7 @@ export const ProductDetails = () => {
   const product = productList.find((item) => item._id === productId);
   const offerId = product.offers[0];
   const offer = offersList.find((item) => item._id === offerId);
+  console.log(offer);
 
   const addRatingStars = (rating) => {
     let starString = [];
