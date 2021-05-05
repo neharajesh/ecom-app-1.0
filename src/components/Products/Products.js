@@ -266,11 +266,16 @@ export const Products = () => {
                   </span>
                 )}
                 <div id="cont-fluid w-100">
-                  <AddToCart
-                    buttonVal={inStock ? "Add to Cart" : "Out of Stock"}
-                    existingProductList={filteredData}
-                    productId={_id}
-                  />
+                  {inStock ? (
+                    <AddToCart
+                      existingProductList={filteredData}
+                      productId={_id}
+                    />
+                  ) : (
+                    <button className="btn-disabled pd-05 mg-05 bdr-thick bdr-rad-m btn w-100">
+                      Out of Stock
+                    </button>
+                  )}
 
                   <AddToWishlist
                     existingProductList={filteredData}

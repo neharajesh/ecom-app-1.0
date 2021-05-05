@@ -1,0 +1,9 @@
+@import url("../../styles.css");
+
+.main-text {
+    font-size: 2em;
+}
+
+.main-text-small {
+    font-size: 1.8em;
+}

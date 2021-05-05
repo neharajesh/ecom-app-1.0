@@ -3,6 +3,8 @@ import { useOffers } from "../../context/offers-context";
 import { useProduct } from "../../context/product-context";
 import { GiRoundStar } from "react-icons/gi";
 import "../../styles.css";
+import { AddToCart } from "../Cart/AddToCart";
+import { AddToWishlist } from "../Wishlist/AddToWishlist";
 
 export const ProductDetails = () => {
   const { offersList } = useOffers();
@@ -69,13 +71,21 @@ export const ProductDetails = () => {
 
         <div className="flex card-w-25 flex-items-center-y">
           <div className="cont-fluid">
-            <button className="pd-05 mg-05 bdr-none bdr-rad-m btn btn-primary-blue txt-white card-w-20">
-              Add to Cart
-            </button>{" "}
+            {product.inStock ? (
+              <AddToCart
+                existingProductList={productList}
+                productId={product._id}
+              />
+            ) : (
+              <button className="btn-disabled pd-05 mg-05 bdr-thick bdr-rad-m btn card-w-20">
+                Out of Stock
+              </button>
+            )}
             <br />
-            <button className="pd-05 mg-05 bdr-thick bdr-blue bdr-rad-m btn btn-secondary-blue card-w-20">
-              Add to Wishlist
-            </button>
+            <AddToWishlist
+              existingProductList={productList}
+              productId={product._id}
+            />
           </div>
         </div>
       </div>

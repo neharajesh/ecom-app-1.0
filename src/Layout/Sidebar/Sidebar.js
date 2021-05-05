@@ -27,14 +27,18 @@ export const Sidebar = ({ sidebar }) => {
         >
           <AiOutlineDropbox size={30} /> <span>Products</span>
         </NavLink>
-        <NavLink to="/login" className="nav-link" activeClassName="nav-active">
-          <FaRegHeart size={30} /> <span>Login</span>
-        </NavLink>
         {/* add navlink for the rest of these */}
         <li className="nav-link">
           <IoMdList size={30} /> <span>Categories</span>
         </li>
         <div className="sidebarOnly">
+          <NavLink
+            to="/login"
+            className="nav-link"
+            activeClassName="nav-active"
+          >
+            <FaRegHeart size={30} /> <span>Login</span>
+          </NavLink>
           <NavLink
             to="/profile"
             className="nav-link"

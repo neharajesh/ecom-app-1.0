@@ -1,8 +1,13 @@
 import "../layout.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, NavLink } from "react-router-dom";
+import { useAuthDispatch, useAuthState } from "../../auth/auth-context";
+import { logout } from "../../auth/auth-actions";
 
 export const Header = ({ handleToggleSidebar }) => {
+  const user = useAuthState();
+  console.log(user);
+  const dispatch = useAuthDispatch();
   return (
     <>
       <div className="header flex flex-space-between flex-items-center">
@@ -28,13 +33,24 @@ export const Header = ({ handleToggleSidebar }) => {
           >
             Wishlist
           </NavLink>
-          <NavLink
-            to="/profile"
-            className="nav-link"
-            activeClassName="nav-active"
-          >
-            Profile
-          </NavLink>
+          {user?.token === "" ? (
+            <NavLink
+              to="/auth/signin"
+              className="nav-link"
+              activeClassName="nav-active"
+            >
+              Login
+            </NavLink>
+          ) : (
+            <NavLink
+              onClick={() => logout(dispatch)}
+              to="/"
+              className="nav-link"
+              activeClassName="nav-active"
+            >
+              Logout
+            </NavLink>
+          )}
         </div>
       </div>
     </>
