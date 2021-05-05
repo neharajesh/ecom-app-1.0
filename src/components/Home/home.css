@@ -1,9 +1,9 @@
 @import url("../../styles.css");
 
-.main-text {
-    font-size: 2em;
-}
-
-.main-text-small {
-    font-size: 1.8em;
+.cont-image {
+    width: 75rem;
+    height: 30rem;
+    padding: 2rem;
+    background-image: url("./dog.jpg");
+    background-size: cover;
 }
