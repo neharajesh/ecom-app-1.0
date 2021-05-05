@@ -12,6 +12,7 @@
     font-weight: bolder;
     text-decoration: none;
     color: black;
+    justify-self: center;
 }
 
 .header-brand:hover {
