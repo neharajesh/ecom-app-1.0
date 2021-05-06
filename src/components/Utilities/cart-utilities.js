@@ -20,7 +20,6 @@ export const updateCart = (productItems, cartItems, itemToUpdateId, action) => {
   } else {
     if (!(itemExistsInCart === undefined)) {
       let selectedItem = cartItems.find((item) => item._id === itemToUpdateId);
-      console.log("Selected Item", selectedItem);
       if (selectedItem.quantity > 1) {
         let updatedCartItemList = cartItems.map((item) => {
           if (item._id === itemToUpdateId) {

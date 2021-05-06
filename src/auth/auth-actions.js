@@ -19,8 +19,7 @@ export const loginUser = async (dispatch, loginPayload) => {
     dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });
     return;
   } catch (err) {
-    console.log("Error occurred while logging in");
-    console.log(err);
+    console.log("Error occurred while logging in", err.message);
   }
 };
 

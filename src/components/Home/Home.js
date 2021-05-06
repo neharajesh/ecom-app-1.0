@@ -3,7 +3,6 @@ import { Categories } from "../Categories/Categories";
 import "./home.css";
 
 export const Home = () => {
-  console.log("home page!");
   return (
     <>
       <div className="cont-home cont-fluid w-100 h-100">

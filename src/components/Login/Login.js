@@ -15,10 +15,7 @@ export const Login = () => {
     let payload = { username, password };
     try {
       let response = await loginUser(dispatch, payload);
-      console.log(response.data.success);
-      if (response.data.success) {
-        setMessage("Could not Login, try again");
-      } else setMessage("Happy Shopping!");
+      setMessage("Happy Shopping!");
     } catch (err) {
       console.log("Error occurred in the Login Component");
     }
