@@ -7,7 +7,14 @@ export const RemoveFromCart = ({
   existingProductList,
   productId,
 }) => {
-  const { setCartCount, setCartPrice, itemsInCart, setItemsInCart } = useCart();
+  const {
+    cartCount,
+    cartPrice,
+    setCartCount,
+    setCartPrice,
+    itemsInCart,
+    setItemsInCart,
+  } = useCart();
 
   const removeFromCartHandler = (
     existingProductList,
@@ -27,9 +34,14 @@ export const RemoveFromCart = ({
       (item) => item._id === productId
     );
     const currentProductPrice = parseFloat(currentProduct.price);
-    setCartCount((count) => count - 1);
-    setCartPrice((price) => price - currentProductPrice);
+    const currentCartCount = cartCount - 1;
+    const currentCartPrice = cartPrice - currentProductPrice;
+    setCartCount(currentCartCount);
+    setCartPrice(currentCartPrice);
     setItemsInCart(updatedCartList);
+    localStorage.setItem("cart", JSON.stringify(updatedCartList));
+    localStorage.setItem("cartCount", JSON.stringify(currentCartCount));
+    localStorage.setItem("cartPrice", JSON.stringify(currentCartPrice));
   };
   return (
     <>

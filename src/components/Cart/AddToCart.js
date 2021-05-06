@@ -3,7 +3,14 @@ import { updateCart } from "../Utilities/cart-utilities";
 import { showNotification } from "../Utilities/toast";
 
 export const AddToCart = ({ buttonVal, existingProductList, productId }) => {
-  const { setCartCount, setCartPrice, itemsInCart, setItemsInCart } = useCart();
+  const {
+    cartCount,
+    setCartCount,
+    cartPrice,
+    setCartPrice,
+    itemsInCart,
+    setItemsInCart,
+  } = useCart();
 
   const addToCartHandler = (existingProductList, itemsInCart, productId) => {
     showNotification("Added to Cart");
@@ -19,9 +26,14 @@ export const AddToCart = ({ buttonVal, existingProductList, productId }) => {
       (item) => item._id === productId
     );
     const currentProductPrice = parseFloat(currentProduct.price);
-    setCartCount((count) => count + 1);
-    setCartPrice((price) => price + currentProductPrice);
+    const updatedCartPrice = cartPrice + currentProductPrice;
+    const updatedCartCount = cartCount + 1;
+    setCartCount(updatedCartCount);
+    setCartPrice(updatedCartPrice);
     setItemsInCart(updatedCartList);
+    localStorage.setItem("cart", JSON.stringify(updatedCartList));
+    localStorage.setItem("cartCount", JSON.stringify(updatedCartPrice));
+    localStorage.setItem("cartPrice", JSON.stringify(updatedCartCount));
   };
 
   return (
