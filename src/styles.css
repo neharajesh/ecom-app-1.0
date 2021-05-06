@@ -1,0 +1,55 @@
+@import url("https://purplecss.netlify.app/styles.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap');
+
+:root {
+    --max-z-index: 5;
+    --color-button-blue: #badcf2;
+    --color-button-black: #ef626c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden; 
+}
+
+.container-app {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+}
+
+.container-page {
+    height: 90vh;
+    width: 100%;
+    overflow-x: hidden;
+    padding-bottom: 1rem;   
+} 
+
+.bs {
+   box-shadow: 5px 5px 6px 0px var(--color-secondary-grey);
+}
+
+.z-index-6 {
+    z-index: 99;
+}
+
+.txt-strikethrough {
+    text-decoration: line-through;
+}
+
+.fill-button-blue { background-color: var(--color-button-blue); }
+.fill-button-black { background-color: var(--color-button-black); }
+.price-blue { color: #457b9d; }
+
+.button-filters { float: right; }
