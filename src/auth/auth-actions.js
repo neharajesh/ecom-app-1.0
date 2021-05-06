@@ -12,14 +12,11 @@ export const loginUser = async (dispatch, loginPayload) => {
       },
     });
     let data = response.data;
-    console.log(data);
-
     if (data.username) {
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
       localStorage.setItem("currentUser", JSON.stringify(data));
       return data;
     }
-
     dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });
     return;
   } catch (err) {

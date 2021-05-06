@@ -268,11 +268,12 @@ export const Products = () => {
                 <div id="cont-fluid w-100">
                   {inStock ? (
                     <AddToCart
+                      buttonVal={"Add to Cart"}
                       existingProductList={filteredData}
                       productId={_id}
                     />
                   ) : (
-                    <button className="btn-disabled pd-05 mg-05 bdr-thick bdr-rad-m btn w-100">
+                    <button className="btn-disabled product-button pd-05 mg-05 bdr-none bdr-rad-m btn txt-black">
                       Out of Stock
                     </button>
                   )}

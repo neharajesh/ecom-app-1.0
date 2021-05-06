@@ -1,8 +1,8 @@
-import { useCategory } from "../../context/categories-context";
+// import { useCategory } from "../../context/categories-context";
 import "../../styles.css";
 
 export const Categories = () => {
-  const { categoryList } = useCategory();
+  // const { categoryList } = useCategory();
 
   return (
     <>

@@ -18,6 +18,14 @@ input:focus {
     border: 2px solid var(--color-primary-purple);
 }
 
+.submit-button {
+    align-self: center;
+}
+
 .submit-button:hover {
     color:black;
+}
+
+.onscreen-text {
+    align-self: center;
 }

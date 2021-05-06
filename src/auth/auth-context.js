@@ -1,6 +1,6 @@
 import { AuthReducer, initialState } from "./auth-reducer";
 
-const { createContext, useReducer, useContext, useState } = require("react");
+const { createContext, useReducer, useContext } = require("react");
 
 //contains authentication token and user details
 const AuthStateContext = createContext();

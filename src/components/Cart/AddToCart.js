@@ -32,7 +32,7 @@ export const AddToCart = ({ buttonVal, existingProductList, productId }) => {
           addToCartHandler(existingProductList, itemsInCart, productId)
         }
       >
-        {buttonVal ? { buttonVal } : "Add to Cart"}
+        {buttonVal}
       </button>
     </>
   );

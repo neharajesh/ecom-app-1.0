@@ -36,13 +36,15 @@ export const Cart = () => {
                 </p>
                 <div className="flex flex-space-evenly">
                   <AddToCart
-                    buttonVal={"+"}
+                    className="mg-r-2"
+                    buttonVal={"Add One"}
                     existingProductList={productList}
                     productId={item._id}
                   />
-                  <p>{item.quantity}</p>
+                  <p className="mg-l-1 mg-r-1 mg-t-1">{item.quantity}</p>
                   <RemoveFromCart
-                    buttonVal={"-"}
+                    className="button-cart"
+                    buttonVal={"Remove One"}
                     existingProductList={productList}
                     productId={item._id}
                   />

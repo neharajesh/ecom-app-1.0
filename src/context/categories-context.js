@@ -6,12 +6,9 @@ const CategoryContext = createContext();
 export const CategoryProvider = ({ children }) => {
   const [categoryList, setCategoryList] = useState();
 
-  console.log("inside categories context");
-
   const loadCategoriesList = async () => {
     try {
       const response = await axios.get("http://localhost:5000/categories");
-      console.log(response.data);
       localStorage.setItem("categoriesList", categoryList);
       setCategoryList(response.data);
     } catch (err) {

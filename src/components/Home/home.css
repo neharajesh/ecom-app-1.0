@@ -1,7 +1,7 @@
 @import url("../../styles.css");
 
 .cont-image {
-    width: 75rem;
+    width: 90%;
     height: 30rem;
     padding: 2rem;
     background-image: url("./dog.jpg");

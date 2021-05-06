@@ -23,6 +23,11 @@ export const Header = ({ handleToggleSidebar }) => {
 
         <div className="header-links flex">
           {user?.token === "" ? (
+            ""
+          ) : (
+            <p className="mg-t-05">Hi, {user.userDetails} !</p>
+          )}
+          {user?.token === "" ? (
             <NavLink
               to="/auth/signin"
               className="nav-link"
