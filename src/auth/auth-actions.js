@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const ROOT_URL = "http://localhost:5000";
+import ROOT_URL from "../config";
 
 export const loginUser = async (dispatch, loginPayload) => {
   try {

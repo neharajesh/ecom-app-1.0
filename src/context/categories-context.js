@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import ROOT_URL from "../config";
 
 const CategoryContext = createContext();
 
@@ -8,7 +9,7 @@ export const CategoryProvider = ({ children }) => {
 
   const loadCategoriesList = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/categories");
+      const response = await axios.get(`${ROOT_URL}/categories`);
       localStorage.setItem("categoriesList", categoryList);
       setCategoryList(response.data);
     } catch (err) {
