@@ -7,7 +7,7 @@ const savedWishlist = localStorage.getItem("wishlist")
   : [];
 
 export const WishlistProvider = ({ children }) => {
-  const [itemsInWishlist, setItemsInWishlist] = useState(savedWishlist);
+  const [itemsInWishlist, setItemsInWishlist] = useState([]);
   return (
     <>
       <WishlistContext.Provider value={{ itemsInWishlist, setItemsInWishlist }}>

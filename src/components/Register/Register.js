@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import "../Login/login.css";
+import ROOT_URL from "../../config";
 
 export const Register = () => {
   const [name, setName] = useState();

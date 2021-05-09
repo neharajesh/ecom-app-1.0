@@ -15,8 +15,9 @@ export const RemoveFromWishlist = ({ itemId }) => {
       itemId,
       "REMOVE"
     );
+    console.log(updatedWishlist);
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
     setItemsInWishlist(updatedWishlist);
-    localStorage.setItem("wishlist", updateWishlist);
   };
   return (
     <>
