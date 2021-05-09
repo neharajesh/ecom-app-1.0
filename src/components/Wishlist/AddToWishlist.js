@@ -14,7 +14,7 @@ export const AddToWishlist = ({ existingProductList, productId }) => {
       "ADD"
     );
     setItemsInWishlist(updatedWishlist);
-    localStorage.setItem("wishlist", updatedWishlist);
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
   };
 
   return (

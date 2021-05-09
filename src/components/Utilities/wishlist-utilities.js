@@ -15,18 +15,18 @@ export const updateWishlist = (
       let selectedItem = productItems.find(
         (item) => item._id === itemToUpdateId
       );
-      return [...wishlistItems, selectedItem];
+      const updatedWishlist = [...wishlistItems, selectedItem];
+      return updatedWishlist;
     } else {
       showNotification("Item already in Wishlist!");
       return wishlistItems;
     }
-  } else {
-    if (!(itemExistsInWishlist === undefined)) {
-      let selectedItem = wishlistItems.find(
-        (item) => item._id === itemToUpdateId
+  } else if (action === "REMOVE") {
+    if (itemExistsInWishlist !== undefined) {
+      const updatedWishlist = wishlistItems.filter(
+        (item) => item._id !== itemToUpdateId
       );
-      console.log("Selected Item", selectedItem);
-      return wishlistItems.filter((item) => item._id !== itemToUpdateId);
+      return updatedWishlist;
     }
   }
 };
