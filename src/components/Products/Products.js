@@ -75,10 +75,10 @@ export const Products = () => {
     filtersDiv.current.style.display = showVal;
   };
 
-  useEffect(() => dispatch({ type: "SORT_BY_RATING", payload: sliderVal }), [
-    sliderVal,
-    setSliderVal,
-  ]);
+  useEffect(
+    () => dispatch({ type: "SORT_BY_RATING", payload: sliderVal }),
+    [sliderVal, setSliderVal]
+  );
 
   const addRatingStars = (rating) => {
     let starString = [];
@@ -285,8 +285,7 @@ export const Products = () => {
                 </div>
                 <br />
                 <Link
-                  id="view-details"
-                  className="txt-black txt-m txt-deco-none"
+                  className="view-details txt-black txt-m txt-deco-none"
                   to={`/products/${_id}`}
                 >
                   View Details
