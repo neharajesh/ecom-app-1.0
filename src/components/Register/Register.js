@@ -10,7 +10,6 @@ export const Register = () => {
   const [message, setMessage] = useState();
 
   const registerClickHandler = async () => {
-    console.log(name, username, password);
     try {
       const response = await axios.post(
         `${ROOT_URL}/auth/signup`,

@@ -5,8 +5,8 @@ import { useAuthDispatch } from "../../auth/auth-context";
 import "./login.css";
 
 export const Login = () => {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
   const dispatch = useAuthDispatch();
