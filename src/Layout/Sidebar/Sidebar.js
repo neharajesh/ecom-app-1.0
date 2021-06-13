@@ -15,13 +15,7 @@ export const Sidebar = ({ sidebar }) => {
   return (
     <>
       <nav className={sidebar ? "sidebar open" : "sidebar"}>
-        <NavLink
-          exact
-          to="/"
-          end
-          className="nav-link"
-          activeClassName="nav-active"
-        >
+        <NavLink to="/" end className="nav-link" activeClassName="nav-active">
           <RiHomeLine size={30} /> <span>Home</span>
         </NavLink>
         <NavLink
@@ -61,14 +55,6 @@ export const Sidebar = ({ sidebar }) => {
               <BiLogOut size={30} /> <span>Logout</span>
             </NavLink>
           )}
-          {/* TO ADD LATER 
-          <NavLink
-            to="/profile"
-            className="nav-link"
-            activeClassName="nav-active"
-          >
-            <VscAccount size={30} /> <span>Profile</span>
-          </NavLink> */}
         </div>
       </nav>
     </>

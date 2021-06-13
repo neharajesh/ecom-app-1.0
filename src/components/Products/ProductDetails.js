@@ -74,6 +74,7 @@ export const ProductDetails = () => {
               <AddToCart
                 existingProductList={productList}
                 productId={product._id}
+                buttonVal="Add to Cart"
               />
             ) : (
               <button className="btn-disabled pd-05 mg-05 bdr-thick bdr-rad-m btn card-w-20">
@@ -88,6 +89,7 @@ export const ProductDetails = () => {
           </div>
         </div>
       </div>
+      <div id="notification-container"></div>
     </div>
   );
 };

@@ -26,26 +26,29 @@ export const Products = () => {
   ] = useReducer(reducerFunction, initialData);
 
   const getOfferSortedData = (existingProductList, sortByOffers) => {
-    const noDiscount = offersList.find((offer) => offer.name === "No Discount");
-    const tenPercent = offersList.find(
-      (offer) => offer.name === "Ten Percent Discount"
-    );
-    const twelvePercent = offersList.find(
-      (offer) => offer.name === "Twelve Percent"
-    );
+    const noDiscount = offersList.find((offer) => offer.discount === 0);
+    const tenPercent = offersList.find((offer) => offer.discount === 10);
+    const twelvePercent = offersList.find((offer) => offer.discount === 12);
 
-    if (sortByOffers === noDiscount) {
-      return existingProductList.filter(
-        (product) => product.offers[0] === noDiscount._id
+    if (sortByOffers && sortByOffers === "NO_DISCOUNT") {
+      console.log("sorting by no discount", noDiscount);
+      const itemsWithNoDiscount = existingProductList.filter((products) =>
+        products.offers.map((offer) => offer === noDiscount._id)
       );
-    } else if (sortByOffers === tenPercent) {
-      return existingProductList.filter(
-        (product) => product.offers[0] === tenPercent._id
+      console.log("no discount selected");
+      return itemsWithNoDiscount;
+    } else if (sortByOffers && sortByOffers === "10_PERC_DISCOUNT") {
+      console.log("sorting by 10% discount", tenPercent);
+      const itemsWithTenPercDiscount = existingProductList.filter((product) =>
+        product.offers.map((offer) => offer === tenPercent._id)
       );
-    } else if (sortByOffers === twelvePercent) {
-      return existingProductList.filter(
-        (product) => product.offers[0] === twelvePercent._id
+      return itemsWithTenPercDiscount;
+    } else if (sortByOffers && sortByOffers === "12_PERC_DISCOUNT") {
+      console.log("sorting by 12% discount", twelvePercent);
+      const itemsWithTwelvePercDiscount = existingProductList.filter(
+        (product) => product.offers.map((offer) => offer === twelvePercent._id)
       );
+      return itemsWithTwelvePercDiscount;
     } else return existingProductList;
   };
 
@@ -159,7 +162,7 @@ export const Products = () => {
           <legend>
             Rating : <span className="txt-700">{sliderVal}</span>
           </legend>
-          1{"  "}
+          1
           <input
             className="range-slider"
             type="range"
@@ -171,7 +174,7 @@ export const Products = () => {
             }}
             checked={sortByRating && sortByRating === sliderVal}
           />
-          {"  "}5
+          5
         </fieldset>
 
         <br />

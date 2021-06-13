@@ -13,7 +13,7 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route exact path="/">
+        <Route path="/">
           <Layout>
             <Home />
           </Layout>

@@ -15,6 +15,7 @@ export const Login = () => {
     let payload = { username, password };
     try {
       let response = await loginUser(dispatch, payload);
+      console.log("Login Response", response);
       setMessage("Happy Shopping!");
     } catch (err) {
       console.log("Error occurred in the Login Component");

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Categories } from "../Categories/Categories";
+// import { Categories } from "../Categories/Categories";
 import "./home.css";
 
 export const Home = () => {
