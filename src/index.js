@@ -8,23 +8,26 @@ import { WishlistProvider } from "./context/wishlist-context";
 import { OffersProvider } from "./context/offers-context";
 import { CategoryProvider } from "./context/categories-context";
 import { AuthProvider } from "./auth/auth-context";
+import { ThemeProvider } from "./context/theme-context";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthProvider>
-        <CategoryProvider>
-          <OffersProvider>
-            <ProductProvider>
-              <CartProvider>
-                <WishlistProvider>
-                  <App />
-                </WishlistProvider>
-              </CartProvider>
-            </ProductProvider>
-          </OffersProvider>
-        </CategoryProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <CategoryProvider>
+            <OffersProvider>
+              <ProductProvider>
+                <CartProvider>
+                  <WishlistProvider>
+                    <App />
+                  </WishlistProvider>
+                </CartProvider>
+              </ProductProvider>
+            </OffersProvider>
+          </CategoryProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

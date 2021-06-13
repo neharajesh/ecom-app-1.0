@@ -8,10 +8,12 @@ import { Wishlist } from "./components/Wishlist/Wishlist";
 import { ProductDetails } from "./components/Products/ProductDetails";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
+import { useTheme } from "./context/theme-context";
 
 const App = () => {
+  const { theme } = useTheme();
   return (
-    <>
+    <div className={theme === "dark" ? "darkTheme" : ""}>
       <Routes>
         <Route path="/">
           <Layout>
@@ -49,7 +51,7 @@ const App = () => {
           </Layout>
         </Route>
       </Routes>
-    </>
+    </div>
   );
 };
 

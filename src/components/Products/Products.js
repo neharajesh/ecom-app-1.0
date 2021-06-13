@@ -288,7 +288,7 @@ export const Products = () => {
                 </div>
                 <br />
                 <Link
-                  className="view-details txt-black txt-m txt-deco-none"
+                  className="view-details txt-grey txt-m txt-deco-none"
                   to={`/products/${_id}`}
                 >
                   View Details
