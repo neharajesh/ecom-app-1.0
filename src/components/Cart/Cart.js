@@ -10,7 +10,7 @@ export const Cart = () => {
   const updatedItemsList = itemsInCart.filter((item) => item.quantity > 0);
 
   return (
-    <div className="flex w-100 h-100">
+    <div className="cart-page flex w-100 h-100">
       <div className="flex-col w-100">
         {updatedItemsList
           .filter((item) => item.quantity > 0)

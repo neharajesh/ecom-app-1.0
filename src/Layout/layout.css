@@ -162,4 +162,7 @@
   .sidebarOnly {
     display: block;
   }
+  .cart-page {
+    flex-direction: column;
+  }
 }
