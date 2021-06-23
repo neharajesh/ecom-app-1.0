@@ -27,34 +27,29 @@ export const Products = () => {
     const twelvePercent = offersList.find((offer) => offer.discount === 12);
 
     if (sortByOffers && sortByOffers === "NO_DISCOUNT") {
-      console.log("sorting by no discount", noDiscount);
-      const itemsWithNoDiscount = existingProductList.filter((products) =>
-        products.offers.map((offer) => offer === noDiscount._id)
+      const items = existingProductList.filter((product) =>
+        product.offers.includes(noDiscount._id)
       );
-      console.log("no discount selected");
-      return itemsWithNoDiscount;
-    } else if (sortByOffers && sortByOffers === "10_PERC_DISCOUNT") {
-      console.log("sorting by 10% discount", tenPercent);
-      const itemsWithTenPercDiscount = existingProductList.filter((product) =>
-        product.offers.map((offer) => offer === tenPercent._id)
+      return items;
+    }
+    if (sortByOffers && sortByOffers === "10_PERC_DISCOUNT") {
+      const items = existingProductList.filter((product) =>
+        product.offers.includes(tenPercent._id)
       );
-      return itemsWithTenPercDiscount;
-    } else if (sortByOffers && sortByOffers === "12_PERC_DISCOUNT") {
-      console.log("sorting by 12% discount", twelvePercent);
-      const itemsWithTwelvePercDiscount = existingProductList.filter(
-        (product) => product.offers.map((offer) => offer === twelvePercent._id)
+      return items;
+    }
+    if (sortByOffers && sortByOffers === "12_PERC_DISCOUNT") {
+      const items = existingProductList.filter((product) =>
+        product.offers.includes(twelvePercent._id)
       );
-      return itemsWithTwelvePercDiscount;
-    } else return existingProductList;
+      return items;
+    }
+    return existingProductList;
   };
 
   const priceSortedData = getPriceSortedData(productList, sortByPrice);
   const ratingSortedData = getRatingSortedData(priceSortedData, sortByRating);
-  const offersSortedData = getOfferSortedData(
-    ratingSortedData,
-    offersList,
-    sortByOffers
-  );
+  const offersSortedData = getOfferSortedData(ratingSortedData, sortByOffers);
   const filteredData = getFilteredData(
     offersSortedData,
     fastDeliveryOnly,
@@ -178,7 +173,7 @@ export const Products = () => {
                 })
               }
               checked={sortByOffers && sortByOffers === "NO_DISCOUNT"}
-            />{" "}
+            />
             No Discount
           </label>
           <br />
