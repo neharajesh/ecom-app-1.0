@@ -1,25 +1,25 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { loginUser } from "../../auth/auth-actions";
-import { useAuthDispatch } from "../../auth/auth-context";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../../api/UserApi";
+import { useUser } from "../../context/user-context";
 import "./login.css";
 
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-
-  const dispatch = useAuthDispatch();
+  const { setUser, setToken } = useUser();
+  const navigate = useNavigate();
 
   const loginClickHandler = async () => {
-    let payload = { username, password };
-    try {
-      let response = await loginUser(dispatch, payload);
-      console.log("Login Response", response);
-      setMessage("Happy Shopping!");
-    } catch (err) {
-      console.log("Error occurred in the Login Component");
-    }
+    const response = await loginUser(username, password);
+    console.log(response);
+    localStorage.setItem("user", JSON.stringify(response.user));
+    localStorage.setItem("token", JSON.stringify(response.authToken));
+    setUser(response.user);
+    setToken(response.authToken);
+    setMessage("Happy Shopping!");
+    navigate("/");
   };
 
   return (

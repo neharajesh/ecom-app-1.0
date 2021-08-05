@@ -9,6 +9,9 @@ import { ProductDetails } from "./components/Products/ProductDetails";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { useTheme } from "./context/theme-context";
+import { Checkout } from "./components/Checkout/Checkout";
+import { Profile } from "./components/Profile/Profile";
+import { AddNewAddress } from "./components/Address/AddNewAddress";
 
 const App = () => {
   const { theme } = useTheme();
@@ -48,6 +51,21 @@ const App = () => {
         <Route path="/auth/signup">
           <Layout>
             <Register />
+          </Layout>
+        </Route>
+        <Route path="/checkout">
+          <Layout>
+            <Checkout />
+          </Layout>
+        </Route>
+        <Route path="/profile">
+          <Layout>
+            <Profile />
+          </Layout>
+        </Route>
+        <Route path="/address/new">
+          <Layout>
+            <AddNewAddress />
           </Layout>
         </Route>
       </Routes>

@@ -6,16 +6,16 @@ import { ProductProvider } from "./context/product-context";
 import { CartProvider } from "./context/cart-context";
 import { WishlistProvider } from "./context/wishlist-context";
 import { OffersProvider } from "./context/offers-context";
-import { CategoryProvider } from "./context/categories-context";
-import { AuthProvider } from "./auth/auth-context";
+import { UserProvider } from "./context/user-context";
 import { ThemeProvider } from "./context/theme-context";
+import { AddressProvider } from "./context/address-context";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <ThemeProvider>
-        <AuthProvider>
-          <CategoryProvider>
+        <UserProvider>
+          <AddressProvider>
             <OffersProvider>
               <ProductProvider>
                 <CartProvider>
@@ -25,8 +25,8 @@ ReactDOM.render(
                 </CartProvider>
               </ProductProvider>
             </OffersProvider>
-          </CategoryProvider>
-        </AuthProvider>
+          </AddressProvider>
+        </UserProvider>
       </ThemeProvider>
     </Router>
   </React.StrictMode>,

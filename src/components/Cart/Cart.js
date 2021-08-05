@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../../context/cart-context";
 import { useProduct } from "../../context/product-context";
 import "../../styles.css";
@@ -66,9 +67,12 @@ export const Cart = () => {
         <p className="mg-tb-1 txt-l">
           Total Cart Price : <span className="txt-700">Rs. {cartPrice}</span>
         </p>
-        <button className="btn fill-primary-yellow pd-05 mg-05 h-fit w-fit bdr-rad-m bdr-thick flex-self-center">
+        <Link
+          to="/checkout"
+          className="btn fill-primary-yellow pd-05 mg-05 h-fit w-fit bdr-rad-m bdr-thick flex-self-center txt-deco-none txt-black"
+        >
           Checkout
-        </button>
+        </Link>
         <div id="notification-container"></div>
       </div>
     </div>
