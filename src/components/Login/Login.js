@@ -22,6 +22,17 @@ export const Login = () => {
     navigate("/");
   };
 
+  const loginAsGuestHandler = async () => {
+    const response = await loginUser("username", "password");
+    console.log(response);
+    localStorage.setItem("user", JSON.stringify(response.user));
+    localStorage.setItem("token", JSON.stringify(response.authToken));
+    setUser(response.user);
+    setToken(response.authToken);
+    setMessage("Happy Shopping!");
+    navigate("/");
+  };
+
   return (
     <div className="details-card">
       <div className="card-w-40 card-h-30 flex-col flex-col-center pd-1">
@@ -48,6 +59,12 @@ export const Login = () => {
           className="submit-button w-50 bdr-rad-m bdr-none fill-primary-purple txt-white pd-05 mg-05"
         >
           Login
+        </button>
+        <button
+          onClick={loginAsGuestHandler}
+          className="submit-button w-50 bdr-rad-m bdr-none fill-primary-purple txt-white pd-05 mg-05"
+        >
+          Login as Guest
         </button>
 
         <Link to="/auth/signup" className="onscreen-text txt-deco-none mg-05">
