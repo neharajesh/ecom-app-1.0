@@ -1,5 +1,6 @@
 import axios from "axios";
 import ROOT_URL from "../config";
+import { initialUser } from "../context/user-context";
 
 export const loginUser = async (username, password) => {
   try {
@@ -36,6 +37,6 @@ export const registerUser = async (user) => {
 };
 
 export const logoutUser = () => {
-  localStorage.removeItem("user");
-  localStorage.removeItem("token");
+  localStorage.setItem("user", initialUser);
+  localStorage.setItem("token", "");
 };

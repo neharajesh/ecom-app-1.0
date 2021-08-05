@@ -38,9 +38,9 @@ export const Checkout = () => {
       setItemsInCart([]);
       setCartPrice(0);
       setCartCount(0);
-      localStorage.setItem("cart", JSON.stringify([]));
-      localStorage.setItem("cartCount", JSON.stringify(0));
-      localStorage.setItem("cartPrice", JSON.stringify(0));
+      localStorage.setItem("cart", []);
+      localStorage.setItem("cartCount", 0);
+      localStorage.setItem("cartPrice", 0);
       navigate("/");
     }, 2000);
   };
