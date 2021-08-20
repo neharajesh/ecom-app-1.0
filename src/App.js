@@ -8,12 +8,17 @@ import { Wishlist } from "./components/Wishlist/Wishlist";
 import { ProductDetails } from "./components/Products/ProductDetails";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
+import { useTheme } from "./context/theme-context";
+import { Checkout } from "./components/Checkout/Checkout";
+import { Profile } from "./components/Profile/Profile";
+import { AddNewAddress } from "./components/Address/AddNewAddress";
 
 const App = () => {
+  const { theme } = useTheme();
   return (
-    <>
+    <div className={theme === "dark" ? "darkTheme" : ""}>
       <Routes>
-        <Route exact path="/">
+        <Route path="/">
           <Layout>
             <Home />
           </Layout>
@@ -48,8 +53,23 @@ const App = () => {
             <Register />
           </Layout>
         </Route>
+        <Route path="/checkout">
+          <Layout>
+            <Checkout />
+          </Layout>
+        </Route>
+        <Route path="/profile">
+          <Layout>
+            <Profile />
+          </Layout>
+        </Route>
+        <Route path="/address/new">
+          <Layout>
+            <AddNewAddress />
+          </Layout>
+        </Route>
       </Routes>
-    </>
+    </div>
   );
 };
 

@@ -9,7 +9,7 @@ export const Home = () => {
         <div className="cont-image mg-t-2">
           <p className="txt-xl mg-tb-1">ALL YOUR PET NEEDS, IN ONE PLACE!</p>
           <p className="txt-l mg-tb-1">
-            Exciting offers on all prodcuts! Check them out now!
+            Exciting offers on all products! Check them out now!
           </p>
           <br />
           <Link
@@ -19,7 +19,6 @@ export const Home = () => {
             Shop now!
           </Link>
         </div>
-        {/* <Categories /> */}
       </div>
     </>
   );

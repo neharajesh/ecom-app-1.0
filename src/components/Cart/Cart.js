@@ -1,16 +1,28 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/cart-context";
 import { useProduct } from "../../context/product-context";
+import { useUser } from "../../context/user-context";
 import "../../styles.css";
 import { AddToCart } from "./AddToCart";
 import { RemoveFromCart } from "./RemoveFromCart";
 
 export const Cart = () => {
   const { cartCount, cartPrice, itemsInCart } = useCart();
+  const { user } = useUser();
+  const navigate = useNavigate();
   const { productList } = useProduct();
   const updatedItemsList = itemsInCart.filter((item) => item.quantity > 0);
 
+  const checkoutHandler = () => {
+    if (user._id === "") {
+      navigate("/auth/signin");
+    } else {
+      navigate("/checkout");
+    }
+  };
+
   return (
-    <div className="flex w-100 h-100">
+    <div className="cart-page flex w-100 h-100">
       <div className="flex-col w-100">
         {updatedItemsList
           .filter((item) => item.quantity > 0)
@@ -66,7 +78,10 @@ export const Cart = () => {
         <p className="mg-tb-1 txt-l">
           Total Cart Price : <span className="txt-700">Rs. {cartPrice}</span>
         </p>
-        <button className="btn fill-primary-yellow pd-05 mg-05 h-fit w-fit bdr-rad-m bdr-thick flex-self-center">
+        <button
+          onClick={() => checkoutHandler()}
+          className="btn fill-primary-yellow pd-05 mg-05 h-fit w-fit bdr-rad-m bdr-thick flex-self-center txt-deco-none txt-black"
+        >
           Checkout
         </button>
         <div id="notification-container"></div>

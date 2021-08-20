@@ -1,55 +1,165 @@
 @import url("https://purplecss.netlify.app/styles.css");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap");
 
 :root {
-    --max-z-index: 5;
-    --color-button-blue: #badcf2;
-    --color-button-black: #ef626c;
+  --max-z-index: 5;
+  --color-button-blue: #badcf2;
+  --color-button-black: #ef626c;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scrollbar-width: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: none;
 }
 
 ::-webkit-scrollbar {
-    width: 0;
+  width: 0;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    overflow: hidden; 
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+  color: black;
+}
+
+.darkTheme {
+  background-color: #212121;
+  color: white;
 }
 
 .container-app {
-    height: 90vh;
-    width: 100%;
-    display: flex;
+  height: 90vh;
+  width: 100%;
+  display: flex;
 }
 
 .container-page {
-    height: 90vh;
-    width: 100%;
-    overflow-x: hidden;
-    padding-bottom: 1rem;   
-} 
+  height: 90vh;
+  width: 100%;
+  overflow-x: hidden;
+  padding-bottom: 1rem;
+}
+
+.txt-grey {
+  color: grey;
+}
+
+.bdr-grey {
+  border-color: grey;
+}
 
 .bs {
-   box-shadow: 5px 5px 6px 0px var(--color-secondary-grey);
+  box-shadow: 5px 5px 6px 0px var(--color-secondary-grey);
 }
 
 .z-index-6 {
-    z-index: 99;
+  z-index: 99;
 }
 
 .txt-strikethrough {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
-.fill-button-blue { background-color: var(--color-button-blue); }
-.fill-button-black { background-color: var(--color-button-black); }
-.price-blue { color: #457b9d; }
+.fill-button-blue {
+  background-color: var(--color-button-blue);
+}
+.fill-button-black {
+  background-color: var(--color-button-black);
+}
+.price-blue {
+  color: #457b9d;
+}
+.display-none {
+  display: none;
+}
+.display-block {
+  display: block;
+}
 
-.button-filters { float: right; }
+.button-filters {
+  float: right;
+}
+
+.w-45 {
+  width: 45%;
+}
+.w-55 {
+  width: 55%;
+}
+.w-85 {
+  width: 85%;
+}
+
+.inputContainer {
+  width: 30rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+}
+
+.inputBox {
+  width: 20rem;
+  padding: 1rem;
+  background-color: transparent;
+  color: inherit;
+}
+
+.addressContainer {
+  display: flex;
+}
+
+.addressCard {
+  border: 1px solid grey;
+  border-radius: 3px;
+  height: 25rem;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+
+.addressDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem;
+  height: auto;
+}
+
+.addressDetails p {
+  text-align: right;
+}
+
+.addressButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.addressButtons button {
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.newAddressBox {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 3px;
+  margin: 1rem;
+  color: white;
+}
+
+.checkoutPage {
+  margin: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}

@@ -1,24 +1,36 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { loginUser } from "../../auth/auth-actions";
-import { useAuthDispatch } from "../../auth/auth-context";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../../api/UserApi";
+import { useUser } from "../../context/user-context";
 import "./login.css";
 
 export const Login = () => {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-
-  const dispatch = useAuthDispatch();
+  const { setUser, setToken } = useUser();
+  const navigate = useNavigate();
 
   const loginClickHandler = async () => {
-    let payload = { username, password };
-    try {
-      let response = await loginUser(dispatch, payload);
-      setMessage("Happy Shopping!");
-    } catch (err) {
-      console.log("Error occurred in the Login Component");
-    }
+    const response = await loginUser(username, password);
+    console.log(response);
+    localStorage.setItem("user", JSON.stringify(response.user));
+    localStorage.setItem("token", JSON.stringify(response.authToken));
+    setUser(response.user);
+    setToken(response.authToken);
+    setMessage("Happy Shopping!");
+    navigate("/");
+  };
+
+  const loginAsGuestHandler = async () => {
+    const response = await loginUser("username", "password");
+    console.log(response);
+    localStorage.setItem("user", JSON.stringify(response.user));
+    localStorage.setItem("token", JSON.stringify(response.authToken));
+    setUser(response.user);
+    setToken(response.authToken);
+    setMessage("Happy Shopping!");
+    navigate("/");
   };
 
   return (
@@ -47,6 +59,12 @@ export const Login = () => {
           className="submit-button w-50 bdr-rad-m bdr-none fill-primary-purple txt-white pd-05 mg-05"
         >
           Login
+        </button>
+        <button
+          onClick={loginAsGuestHandler}
+          className="submit-button w-50 bdr-rad-m bdr-none fill-primary-purple txt-white pd-05 mg-05"
+        >
+          Login as Guest
         </button>
 
         <Link to="/auth/signup" className="onscreen-text txt-deco-none mg-05">

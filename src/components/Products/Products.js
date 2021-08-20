@@ -1,18 +1,14 @@
 import { useEffect, useReducer, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { useProduct } from "../../context/product-context";
 import "./products.css";
 import { useOffers } from "../../context/offers-context";
-import { BsLightningFill } from "react-icons/bs";
-import { GiRoundStar } from "react-icons/gi";
 import { initialData, reducerFunction } from "../../reducer/product-reducer";
 import {
   getPriceSortedData,
   getRatingSortedData,
   getFilteredData,
 } from "../Utilities/product-utilities";
-import { AddToCart } from "../Cart/AddToCart";
-import { AddToWishlist } from "../Wishlist/AddToWishlist";
+import { ProductCard } from "./ProductCard";
 
 export const Products = () => {
   const { productList } = useProduct();
@@ -26,36 +22,34 @@ export const Products = () => {
   ] = useReducer(reducerFunction, initialData);
 
   const getOfferSortedData = (existingProductList, sortByOffers) => {
-    const noDiscount = offersList.find((offer) => offer.name === "No Discount");
-    const tenPercent = offersList.find(
-      (offer) => offer.name === "Ten Percent Discount"
-    );
-    const twelvePercent = offersList.find(
-      (offer) => offer.name === "Twelve Percent"
-    );
+    const noDiscount = offersList.find((offer) => offer.discount === 0);
+    const tenPercent = offersList.find((offer) => offer.discount === 10);
+    const twelvePercent = offersList.find((offer) => offer.discount === 12);
 
-    if (sortByOffers === noDiscount) {
-      return existingProductList.filter(
-        (product) => product.offers[0] === noDiscount._id
+    if (sortByOffers && sortByOffers === "NO_DISCOUNT") {
+      const items = existingProductList.filter((product) =>
+        product.offers.includes(noDiscount._id)
       );
-    } else if (sortByOffers === tenPercent) {
-      return existingProductList.filter(
-        (product) => product.offers[0] === tenPercent._id
+      return items;
+    }
+    if (sortByOffers && sortByOffers === "10_PERC_DISCOUNT") {
+      const items = existingProductList.filter((product) =>
+        product.offers.includes(tenPercent._id)
       );
-    } else if (sortByOffers === twelvePercent) {
-      return existingProductList.filter(
-        (product) => product.offers[0] === twelvePercent._id
+      return items;
+    }
+    if (sortByOffers && sortByOffers === "12_PERC_DISCOUNT") {
+      const items = existingProductList.filter((product) =>
+        product.offers.includes(twelvePercent._id)
       );
-    } else return existingProductList;
+      return items;
+    }
+    return existingProductList;
   };
 
   const priceSortedData = getPriceSortedData(productList, sortByPrice);
   const ratingSortedData = getRatingSortedData(priceSortedData, sortByRating);
-  const offersSortedData = getOfferSortedData(
-    ratingSortedData,
-    offersList,
-    sortByOffers
-  );
+  const offersSortedData = getOfferSortedData(ratingSortedData, sortByOffers);
   const filteredData = getFilteredData(
     offersSortedData,
     fastDeliveryOnly,
@@ -75,20 +69,10 @@ export const Products = () => {
     filtersDiv.current.style.display = showVal;
   };
 
-  useEffect(() => dispatch({ type: "SORT_BY_RATING", payload: sliderVal }), [
-    sliderVal,
-    setSliderVal,
-  ]);
-
-  const addRatingStars = (rating) => {
-    let starString = [];
-    for (let i = 0; i < rating; i++) {
-      starString.push(
-        <GiRoundStar size={20} className="mg-r-025 txt-yellow" />
-      );
-    }
-    return starString;
-  };
+  useEffect(
+    () => dispatch({ type: "SORT_BY_RATING", payload: sliderVal }),
+    [sliderVal, setSliderVal]
+  );
 
   return (
     <>
@@ -159,7 +143,7 @@ export const Products = () => {
           <legend>
             Rating : <span className="txt-700">{sliderVal}</span>
           </legend>
-          1{"  "}
+          1
           <input
             className="range-slider"
             type="range"
@@ -171,7 +155,7 @@ export const Products = () => {
             }}
             checked={sortByRating && sortByRating === sliderVal}
           />
-          {"  "}5
+          5
         </fieldset>
 
         <br />
@@ -189,7 +173,7 @@ export const Products = () => {
                 })
               }
               checked={sortByOffers && sortByOffers === "NO_DISCOUNT"}
-            />{" "}
+            />
             No Discount
           </label>
           <br />
@@ -233,68 +217,9 @@ export const Products = () => {
       </div>
 
       <div className="h-auto w-100 flex flex-row-wrap mg-tb-1 mg-r-2">
-        {filteredData.map(
-          ({
-            _id,
-            name,
-            brand,
-            image,
-            price,
-            rating,
-            inStock,
-            fastDelivery,
-          }) => (
-            <div
-              key={_id}
-              className="product-item card bdr-thin bdr-none bs bdr-rad-m mg-05 flex"
-            >
-              <img
-                className="img-m mg-05 flex-self-center"
-                src={image}
-                alt={name}
-              />
-              <div className="w-100 mg-1 flex-col-center-items-y">
-                <p className="txt-700 txt-l">{name}</p>
-                <p className="txt-500 txt-s txt-grey">{brand.toUpperCase()}</p>
-                <p className="txt-l txt-700 txt-blue mg-tb-025 price-blue">
-                  Rs. {price}
-                </p>
-                <span className=" mg-tb-05">{addRatingStars(rating)}</span>
-                {fastDelivery && (
-                  <span className="badge-tl txt-500 pd-05 txt-s bdr-rad-round">
-                    <BsLightningFill size={20} className="txt-yellow" />
-                  </span>
-                )}
-                <div id="cont-fluid w-100">
-                  {inStock ? (
-                    <AddToCart
-                      buttonVal={"Add to Cart"}
-                      existingProductList={filteredData}
-                      productId={_id}
-                    />
-                  ) : (
-                    <button className="btn-disabled product-button pd-05 mg-05 bdr-none bdr-rad-m btn txt-black">
-                      Out of Stock
-                    </button>
-                  )}
-
-                  <AddToWishlist
-                    existingProductList={filteredData}
-                    productId={_id}
-                  />
-                </div>
-                <br />
-                <Link
-                  id="view-details"
-                  className="txt-black txt-m txt-deco-none"
-                  to={`/products/${_id}`}
-                >
-                  View Details
-                </Link>
-              </div>
-            </div>
-          )
-        )}
+        {filteredData.map((product) => (
+          <ProductCard productList={filteredData} product={product} />
+        ))}
         <div id="notification-container"></div>
       </div>
     </>

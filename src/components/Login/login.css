@@ -1,31 +1,34 @@
 @import url("../../styles.css");
 
 .details-card {
-    width: 50rem;
-    height: 30rem;
-    display: flex;
-    place-content: center;
-    place-items: center;
-    margin-top: 3rem;
+  width: 50rem;
+  height: 30rem;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  margin-top: 3rem;
 }
 
 input {
-    border: 2px solid var(--color-secondary-grey);
-    border-radius: 3px;
+  border: 2px solid var(--color-secondary-grey);
+  border-radius: 3px;
+  background-color: transparent;
+  color: inherit;
 }
 
 input:focus {
-    border: 2px solid var(--color-primary-purple);
+  border: 2px solid var(--color-primary-purple);
 }
 
 .submit-button {
-    align-self: center;
+  align-self: center;
 }
 
 .submit-button:hover {
-    color:black;
+  color: black;
 }
 
 .onscreen-text {
-    align-self: center;
+  align-self: center;
+  color: inherit;
 }
