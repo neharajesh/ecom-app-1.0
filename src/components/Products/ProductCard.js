@@ -1,3 +1,4 @@
+import React from "react";
 import { BsLightningFill } from "react-icons/bs";
 import { GiRoundStar } from "react-icons/gi";
 import { AddToCart } from "../Cart/AddToCart";

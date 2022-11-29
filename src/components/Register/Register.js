@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useState } from "react";
+// import axios from "axios";
+import React, { useState } from "react";
 import "../Login/login.css";
-import ROOT_URL from "../../config";
+// import ROOT_URL from "../../config";
 import { registerUser } from "../../api/UserApi";
 import { useUser } from "../../context/user-context";
 

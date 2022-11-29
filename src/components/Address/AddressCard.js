@@ -1,3 +1,5 @@
+import React from "react";
+
 export const AddressCard = ({ address }) => {
   return (
     <>

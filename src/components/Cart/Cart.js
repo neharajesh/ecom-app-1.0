@@ -1,4 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/cart-context";
 import { useProduct } from "../../context/product-context";
 import { useUser } from "../../context/user-context";

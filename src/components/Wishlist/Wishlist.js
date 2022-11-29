@@ -1,3 +1,4 @@
+import React from "react";
 import { useWishlist } from "../../context/wishlist-context";
 import "../../styles.css";
 import { RemoveFromWishlist } from "./RemoveFromWishlist";

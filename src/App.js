@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router";
 import { Layout } from "./Layout/Layout";
 import "./styles.css";

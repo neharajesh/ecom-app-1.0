@@ -1,8 +1,8 @@
 import { useCart } from "../../context/cart-context";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAddress } from "../../context/address-context";
 import { AddressCard } from "../Address/AddressCard";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { showNotification } from "../Utilities/toast";
 
 const initialDeliveryAddress = {

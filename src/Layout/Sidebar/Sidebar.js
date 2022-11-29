@@ -1,3 +1,4 @@
+import React from "react";
 import "../layout.css";
 import { RiHomeLine } from "react-icons/ri";
 import { FiShoppingCart } from "react-icons/fi";
@@ -6,11 +7,11 @@ import { CgProfile } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
 import { AiOutlineDropbox } from "react-icons/ai";
 import { useTheme } from "../../context/theme-context";
-import { useUser } from "../../context/user-context";
+// import { useUser } from "../../context/user-context";
 
 export const Sidebar = ({ sidebar }) => {
   const { theme, setTheme } = useTheme();
-  const { user } = useUser();
+  // const { user } = useUser();
 
   const toggleTheme = () => {
     theme === "dark" ? setTheme("") : setTheme("dark");

@@ -1,3 +1,4 @@
+import React from "react";
 import "../layout.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, NavLink } from "react-router-dom";

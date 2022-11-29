@@ -1,3 +1,4 @@
+import React from "react";
 import { useParams } from "react-router";
 import { useOffers } from "../../context/offers-context";
 import { useProduct } from "../../context/product-context";
