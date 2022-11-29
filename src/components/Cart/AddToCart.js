@@ -1,5 +1,5 @@
 import React from "react";
-import { useCart } from "../../context/cart-context";
+import { useCart } from "context/cart-context";
 import { updateCart } from "../Utilities/cart-utilities";
 import { showNotification } from "../Utilities/toast";
 

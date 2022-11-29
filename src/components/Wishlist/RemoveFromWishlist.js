@@ -1,8 +1,8 @@
 import React from "react";
 import { showNotification } from "../Utilities/toast";
 import { updateWishlist } from "../Utilities/wishlist-utilities";
-import { useProduct } from "../../context/product-context";
-import { useWishlist } from "../../context/wishlist-context";
+import { useProduct } from "context/product-context";
+import { useWishlist } from "context/wishlist-context";
 
 export const RemoveFromWishlist = ({ itemId }) => {
   const { itemsInWishlist, setItemsInWishlist } = useWishlist();

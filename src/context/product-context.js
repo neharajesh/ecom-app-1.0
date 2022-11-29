@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { createContext, useState, useEffect, useContext } from "react";
-import ROOT_URL from "../config";
+import ROOT_URL from "config";
 
 const ProductContext = createContext();
 

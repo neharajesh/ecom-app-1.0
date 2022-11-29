@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { addNewAddress } from "../../api/AddressApi";
-import { useUser } from "../../context/user-context";
+import { addNewAddress } from "api/AddressApi";
+import { useUser } from "context/user-context";
 
 export const AddNewAddress = () => {
   const { user } = useUser();

@@ -1,5 +1,5 @@
 import React from "react";
-import { useUser } from "../../context/user-context";
+import { useUser } from "context/user-context";
 import { Address } from "../Address/Address";
 
 export const Profile = () => {

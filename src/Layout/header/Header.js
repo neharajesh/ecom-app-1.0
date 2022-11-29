@@ -1,9 +1,9 @@
 import React from "react";
-import "../layout.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, NavLink } from "react-router-dom";
-import { useUser } from "../../context/user-context";
-import { logoutUser } from "../../api/UserApi";
+import { useUser } from "context/user-context";
+import { logoutUser } from "api/UserApi";
+import "../layout.css";
 
 export const Header = ({ handleToggleSidebar }) => {
   const { user, token } = useUser();

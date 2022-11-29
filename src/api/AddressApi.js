@@ -1,5 +1,5 @@
 import axios from "axios";
-import ROOT_URL from "../config";
+import ROOT_URL from "config";
 
 export const getAllAddresses = async () => {
   try {
