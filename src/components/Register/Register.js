@@ -1,8 +1,8 @@
 // import axios from "axios";
 import React, { useState } from "react";
 // import ROOT_URL from "../../config";
-import { registerUser } from "api/UserApi";
-import { useUser } from "context/user-context";
+import { registerUser } from "../../api/UserApi";
+import { useUser } from "../../context/user-context";
 import "../Login/login.css";
 
 export const Register = () => {

@@ -1,7 +1,7 @@
 import React from "react";
-import { useWishlist } from "context/wishlist-context";
-import "../../styles.css";
+import { useWishlist } from "../../context/wishlist-context";
 import { RemoveFromWishlist } from "./RemoveFromWishlist";
+import "../../styles.css";
 
 export const Wishlist = () => {
   const { itemsInWishlist } = useWishlist();

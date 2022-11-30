@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { deleteAddressById, fetchUsersAddresses } from "api/AddressApi";
-import { useAddress } from "context/address-context";
-import { useUser } from "context/user-context";
+import { deleteAddressById, fetchUsersAddresses } from "../../api/AddressApi";
+import { useAddress } from "../../context/address-context";
+import { useUser } from "../../context/user-context";
 import { AddressCard } from "./AddressCard";
 
 export const Address = () => {

@@ -1,7 +1,7 @@
 import React from "react";
-import { useCart } from "context/cart-context";
-import { updateCart } from "utilities/cart-utilities";
-import { showNotification } from "utilities/toast";
+import { useCart } from "../../context/cart-context";
+import { updateCart } from "../../components/Utilities/cart-utilities";
+import { showNotification } from "../../components/Utilities/toast";
 
 export const RemoveFromCart = ({
   buttonVal,

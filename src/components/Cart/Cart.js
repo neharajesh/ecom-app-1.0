@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "context/cart-context";
-import { useProduct } from "context/product-context";
-import { useUser } from "context/user-context";
+import { useCart } from "../../context/cart-context";
+import { useProduct } from "../../context/product-context";
+import { useUser } from "../../context/user-context";
 import { AddToCart } from "./AddToCart";
 import { RemoveFromCart } from "./RemoveFromCart";
 import "../../styles.css";

@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
-import { useOffers } from "context/offers-context";
-import { useProduct } from "context/product-context";
+import { useOffers } from "../../context/offers-context";
+import { useProduct } from "../../context/product-context";
 import { GiRoundStar } from "react-icons/gi";
 import { AddToCart } from "../Cart/AddToCart";
 import { AddToWishlist } from "../Wishlist/AddToWishlist";

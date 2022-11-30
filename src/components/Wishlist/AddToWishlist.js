@@ -1,7 +1,7 @@
 import React from "react";
-import { showNotification } from "utilities/toast";
-import { updateWishlist } from "utilities/wishlist-utilities";
-import { useWishlist } from "context/wishlist-context";
+import { showNotification } from "../../components/Utilities/toast";
+import { updateWishlist } from "../../components/Utilities/wishlist-utilities";
+import { useWishlist } from "../../context/wishlist-context";
 import "../../styles.css";
 
 export const AddToWishlist = ({ existingProductList, productId }) => {

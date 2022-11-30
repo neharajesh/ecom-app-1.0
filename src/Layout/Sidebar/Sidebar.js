@@ -5,7 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
 import { AiOutlineDropbox } from "react-icons/ai";
-import { useTheme } from "context/theme-context";
+import { useTheme } from "../../context/theme-context";
 import "../layout.css";
 // import { useUser } from "context/user-context";
 
