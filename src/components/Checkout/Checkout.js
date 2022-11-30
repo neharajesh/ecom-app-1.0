@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "context/cart-context";
 import { useAddress } from "context/address-context";
 import { AddressCard } from "../Address/AddressCard";
-import { showNotification } from "../Utilities/toast";
+import { showNotification } from "utilities/toast";
 
 const initialDeliveryAddress = {
   _id: "",

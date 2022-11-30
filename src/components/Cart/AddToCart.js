@@ -1,7 +1,7 @@
 import React from "react";
 import { useCart } from "context/cart-context";
-import { updateCart } from "../Utilities/cart-utilities";
-import { showNotification } from "../Utilities/toast";
+import { updateCart } from "utilities/cart-utilities";
+import { showNotification } from "utilities/toast";
 
 export const AddToCart = ({ buttonVal, existingProductList, productId }) => {
   const {

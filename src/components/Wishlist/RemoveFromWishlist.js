@@ -1,6 +1,6 @@
 import React from "react";
-import { showNotification } from "../Utilities/toast";
-import { updateWishlist } from "../Utilities/wishlist-utilities";
+import { showNotification } from "utilities/toast";
+import { updateWishlist } from "utilities/wishlist-utilities";
 import { useProduct } from "context/product-context";
 import { useWishlist } from "context/wishlist-context";
 

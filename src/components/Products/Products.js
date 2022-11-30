@@ -1,13 +1,13 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
-import { useProduct } from "../../context/product-context";
+import { useProduct } from "context/product-context";
 import "./products.css";
-import { useOffers } from "../../context/offers-context";
-import { initialData, reducerFunction } from "../../reducer/product-reducer";
+import { useOffers } from "context/offers-context";
+import { initialData, reducerFunction } from "reducer/product-reducer";
 import {
   getPriceSortedData,
   getRatingSortedData,
   getFilteredData,
-} from "../Utilities/product-utilities";
+} from "utilities/product-utilities";
 import { ProductCard } from "./ProductCard";
 
 export const Products = () => {

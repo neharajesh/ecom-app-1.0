@@ -11,6 +11,9 @@
       "components/*": [
         "./components/*"
       ],
+      "utilites/*": [
+        "./components/utilites/*"
+      ],
       "Layout/*": [
         "./Layout/*"
       ],
